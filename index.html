@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script id="javascript-sdk" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+</head>
+<body>
+
+<p><strong>아래 버튼을 눌러 카카오톡으로 메시지를 전송하세요.</strong></p>
+
+<a id="kakao-link-btn" href="javascript:sendLink()">
+  <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
+</a>
+
+<script type="text/javascript">
+  // Kakao SDK 초기화 (소유자가 발급한 JavaScript 키 사용)
+  Kakao.init('f3840451f0d0f54a9251f2e0fb78a333'); 
+
+  function sendLink() {
+    Kakao.Link.sendDefault({
+      objectType: 'feed',
+      content: {
+        title: '공유할 제목',
+        description: '공유할 설명',
+        imageUrl: 'https://yourdomain.com/image.jpg',
+        link: {
+          mobileWebUrl: 'https://yourdomain.com',
+          webUrl: 'https://yourdomain.com',
+        },
+      },
+      buttons: [
+        {
+          title: '자세히 보기',
+          link: {
+            mobileWebUrl: 'https://yourdomain.com',
+            webUrl: 'https://yourdomain.com',
+          },
+        },
+      ],
+    });
+  }
+</script>
+
+</body>
+</html>
