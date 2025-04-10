@@ -1,44 +1,95 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <script id="javascript-sdk" src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
+  <meta charset="UTF-8">
+  <title>Kakao Link Demo</title>
+  <!-- Kakao JavaScript SDK 불러오기 -->
+  <script src="https://developers.kakao.com/sdk/js/kakao.min.js"></script>
 </head>
 <body>
 
-<p><strong>아래 버튼을 눌러 카카오톡으로 메시지를 전송하세요.</strong></p>
+  <p><strong>아래 버튼을 눌러 카카오톡으로 메시지를 전송하세요.</strong></p>
+  
+  <!-- 첫 번째 메시지 전송 버튼 -->
+  <a id="kakao-link-btn-1" href="javascript:sendLink()">
+    <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="카카오톡 메시지 전송 버튼"/>
+  </a>
+  
+  <br><br>
+  
+  <!-- 두 번째 메시지 전송 버튼 (내용이 약간 변경된 메시지) -->
+  <a id="kakao-link-btn-2" href="javascript:sendLink2()">
+    <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" alt="두 번째 카카오톡 메시지 전송 버튼"/>
+  </a>
+  
+  <script type="text/javascript">
+    // Kakao SDK 초기화 (소유자가 발급한 JavaScript 키 사용)
+    Kakao.init('da861183a34041a1318deb6219706bd8'); 
 
-<a id="kakao-link-btn" href="javascript:sendLink()">
-  <img src="https://developers.kakao.com/assets/img/about/logos/kakaolink/kakaolink_btn_medium.png" />
-</a>
-
-<script type="text/javascript">
-  // Kakao SDK 초기화 (소유자가 발급한 JavaScript 키 사용)
-  Kakao.init('da861183a34041a1318deb6219706bd8'); 
-
-  function sendLink() {
-    Kakao.Link.sendDefault({
-      objectType: 'feed',
-      content: {
-        title: '멤버십 안내',
-        description: '지금 가입하면, 매달 KT 쿠폰을 드려요\n간편 가입하고 여러 혜택 누려요~!',
-        imageUrl: 'http://k.kakaocdn.net/dn/KPsWJ/btsM1R2CKS5/KSAmUH7r3Ai4K3kwp1bdi0/img_l.jpg',
-        link: {
-          mobileWebUrl: 'https://eroumcredit.kr/',
-          webUrl: 'https://eroumcredit.kr/',
-        },
-      },
-      buttons: [
-        {
-          title: '더 알아보기',
+    // 첫 번째 메시지 전송 함수: 기본 멤버십 안내 메시지
+    function sendLink() {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '멤버십 안내',
+          description: '지금 가입하면, 매달 KT 쿠폰을 드려요\n간편 가입하고 여러 혜택 누려요~!',
+          imageUrl: 'http://k.kakaocdn.net/dn/KPsWJ/btsM1R2CKS5/KSAmUH7r3Ai4K3kwp1bdi0/img_l.jpg',
           link: {
             mobileWebUrl: 'https://eroumcredit.kr/',
-            webUrl: 'https://eroumcredit.kr/',
-          },
+            webUrl: 'https://eroumcredit.kr/'
+          }
         },
-      ],
-    });
-  }
-</script>
+        buttons: [
+          {
+            title: '더 알아보기',
+            link: {
+              mobileWebUrl: 'https://eroumcredit.kr/',
+              webUrl: 'https://eroumcredit.kr/'
+            }
+          },
+          {
+            title: '멤버십 가입',
+            link: {
+              mobileWebUrl: 'https://eroumcredit.kr/bbs/register.php?t=small',
+              webUrl: 'https://eroumcredit.kr/bbs/register.php?t=small'
+            }
+          }
+        ]
+      });
+    }
 
+    // 두 번째 메시지 전송 함수: 세부 내용이 약간 다른 멤버십 안내 메시지
+    function sendLink2() {
+      Kakao.Link.sendDefault({
+        objectType: 'feed',
+        content: {
+          title: '멤버십 안내',
+          description: '나만의 앱/웹 사용과 KT 쿠폰을 동시에? 사이트에서 자세히 알아보세요!',
+          imageUrl: 'http://k.kakaocdn.net/dn/bsrKVk/btsMENt17ei/mcjlaGyGPkMTZ5hKkgBs51/img.png',
+          link: {
+            mobileWebUrl: 'https://eroum-shop.kr/',
+            webUrl: 'https://eroum-shop.kr/'
+          }
+        },
+        buttons: [
+          {
+            title: '더 알아보기',
+            link: {
+              mobileWebUrl: 'https://eroum-shop.kr/',
+              webUrl: 'https://eroum-shop.kr/'
+            }
+          },
+          {
+            title: '멤버십 가입',
+            link: {
+              mobileWebUrl: 'https://eroum-shop.kr/bbs/register.php',
+              webUrl: 'https://eroum-shop.kr/bbs/register.php'
+            }
+          }
+        ]
+      });
+    }
+  </script>
+  
 </body>
 </html>
